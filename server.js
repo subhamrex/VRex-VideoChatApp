@@ -16,13 +16,14 @@ app.use('/peerjs',peerServer);
 app.get('/', (req, res) => {
     res.redirect(`/${uuidv4()}`);
 })
+app.get('/exit',(req,res) => {
+    res.render("exit",{});
+})
 
 app.get('/:room', (req, res) => {
     res.render("room",{roomId: req.params.room});
 })
-app.get('/exit',(req,res) => {
-    res.render("exit",{});
-})
+
 
 
 io.on('connection',socket =>{
