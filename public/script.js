@@ -36,7 +36,7 @@ navigator.mediaDevices.getUserMedia({
 
 $('html').keydown(function(e){
     if(e.which==13 && text.val().length !==0){
-        socket.emit('message',text.val());
+        socket.emit('message',{textv:text.val(),personv:person});
         text.val('')
 
     }
@@ -44,7 +44,7 @@ $('html').keydown(function(e){
 
 socket.on('createMessage',message => {
     
-    $('.messages').append(`<li class="message"><b>User</b><br>${message}</li>`)
+    $('.messages').append(`<li class="message"><b>${message.personv}</b><br>${message.textv}</li>`)
     scrollToBottom()
 })
 })
